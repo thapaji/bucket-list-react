@@ -1,0 +1,30 @@
+#root {
+  background: url(https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+    no-repeat;
+  padding-bottom: 2rem;
+  min-height: 100vh;
+}
+
+.blurred-background {
+  backdrop-filter: blur(5px); /* Applies the blur effect to the background */
+  background-color: rgba(255, 255, 255, 0.5); /* Sets a semi-transparent white background */
+}
+
+.table-transparent {
+  border-collapse: collapse; /* Collapse borders to prevent doubled border lines */
+  --bs-table-bg: transparent;
+  --bs-table-active-bg:transparent;
+  --bs-table-border-color: white;
+  --bs-table-active-color: var(--bs-emphasis-color);
+  --bs-table-hover-color: var(--bs-emphasis-color);
+}
+
+.table-transparent th,
+.table-transparent td {
+  border: none; /* Remove default table borders */
+  padding: 8px 16px; /* Adjust padding as needed */
+}
+
+.table-group-divider tr {
+  border-bottom: 1px solid #dee2e6; /* Add a bottom border to each table row */
+}
