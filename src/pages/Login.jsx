@@ -55,16 +55,7 @@ export const Login = ({ setLogedInUser }) => {
   return (
     <div>
       <Container className="main" fluid>
-        <Row>
-          <Col
-            md={6}
-            className="bg-info vh-md-100 d-flex justify-content-center align-items-center text-white"
-          >
-            <div className="shadow-lg rounded p-3">
-              <h1>Welcome Back !!!</h1>
-              <p>Login to your account and take control your finance.</p>
-            </div>
-          </Col>
+        <Row className="d-flex justify-content-center">
           <Col md={6} className="d-flex justify-content-center align-items-center">
             <div className="shadow-lg p-3 rounded border w-75 mt-5 mb-5">
               <h2>Login Now</h2>

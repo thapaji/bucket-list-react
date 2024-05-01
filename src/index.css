@@ -1,19 +1,13 @@
 #root {
   background: url(https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
     center no-repeat;
-  /* background-color: #BFD7EA; */
-  /* padding: 1rem; */
-  /* height: 100vh; */
+  /* background-color: #BFD7EA; 
+   padding: 1rem; 
+   height: 100vh; */
 }
 
-.header {
-  /* background-color: #087E8B; */
-  background-color: #bfd7ea;
-  position: sticky;
-}
-
-.header ul{
-  list-style-type: none;
+.main {
+  height: calc(100vh - 11rem);
 }
 
 .blurred-background {

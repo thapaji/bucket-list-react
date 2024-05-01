@@ -67,30 +67,11 @@ const Signup = () => {
       placeholder: "Confirm Password",
       required: true,
     },
-    {
-      label: "Phone",
-      name: "phone",
-      type: "number",
-      placeholder: "Phone Number",
-      required: true,
-    },
   ];
   return (
     <div>
       <Container className="main" fluid>
-        <Row>
-          <Col
-            md={6}
-            className="bg-info vh-md-100 d-flex justify-content-center align-items-center text-white"
-          >
-            <div className="shadow-lg rounded p-3">
-              <h1>Join Our Community!!!</h1>
-              <p>
-                Easy to use. Effective to track your finance. One stop to managing your
-                accounts!!!!!
-              </p>
-            </div>
-          </Col>
+        <Row className="d-flex justify-content-center">
           <Col md={6} className="d-flex justify-content-center align-items-center">
             <div className="shadow-lg p-3 rounded border w-75 mt-5 mb-5">
               <h2>Sign Up Now</h2>
