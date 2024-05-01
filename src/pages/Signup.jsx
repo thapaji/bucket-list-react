@@ -8,8 +8,7 @@ const Signup = () => {
     name: "",
     email: "",
     password: "",
-    confirmPassword: "",
-    phone: "",
+    confirmPassword: ""
   };
   const [formData, setFormData] = useState(initialState);
   const [resp, setResp] = useState("");

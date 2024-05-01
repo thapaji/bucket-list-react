@@ -1,6 +1,7 @@
 import axios from 'axios';
 const rootAPI = import.meta.env.VITE_APP_ROOTAPI;
 const userEp = rootAPI + '/users';
+const listEp = rootAPI + '/bucket-lists';
 
 export const postNewUser = async (userObj) => {
     try {

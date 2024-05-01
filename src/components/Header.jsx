@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <Navbar expand="md" className="bg-info shadow-lg">
       <Container>
-        <Navbar.Brand href="/">T-App</Navbar.Brand>
+        <Navbar.Brand href="/">Bucket List Manager</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">

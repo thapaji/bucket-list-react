@@ -9,6 +9,7 @@ export const Login = ({ setLogedInUser }) => {
     email: "",
     password: "",
   };
+  
   const navigate = useNavigate();
   const [formData, setFormData] = useState(initialState);
   const [resp, setResp] = useState("");
@@ -24,8 +25,6 @@ export const Login = ({ setLogedInUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //console.log(formData);
-    /* Api Call Here*/
     const result = await loginUser(formData);
     setResp({ status: result.status, message: result.message });
 
