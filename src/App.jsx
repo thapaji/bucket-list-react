@@ -12,11 +12,13 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<MainLayout logedInUser={logedInUser} setShow={setShow} />}>
+      <Route
+        path="/"
+        element={<MainLayout logedInUser={logedInUser} setShow={setShow} show={show} />}
+      >
         <Route path="/" element={<Login setLogedInUser={setLogedInUser} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard logedInUser={logedInUser} />} />
-        <Route path="/add" element={<AddNewList logedInUser={logedInUser} />} />
       </Route>
     </Routes>
   );
