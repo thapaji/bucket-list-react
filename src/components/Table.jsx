@@ -2,12 +2,12 @@ import React, { useState } from "react";
 
 export const Table = () => {
   return (
-    <div className="card border border-white shadow-lg p-4 bg-transparent blurred-background">
+    <div className="card border border-white shadow-lg p-4 bg-transparent glasscard">
       <div className="row">
         <div className="col-md">
           <h3 className="text-center">Bucket List</h3>
           <hr />
-          <table className="table table-hover table-transparent">
+          <table className="table-transparent table table-hover">
             <thead>
               <tr>
                 <td>#</td>

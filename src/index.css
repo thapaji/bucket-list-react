@@ -10,18 +10,13 @@
   height: calc(100vh - 11rem);
 }
 
-.blurred-background {
-  backdrop-filter: blur(18px); /* Applies the blur effect to the background */
-  background-color: rgba(255, 255, 255, 0.5); /* Sets a semi-transparent white background */
+.glasscard {
+  backdrop-filter: blur(10px); 
+  background-color: rgba(255, 255, 255, 0.2); 
 }
 
 .table-transparent {
-  border-collapse: collapse; /* Collapse borders to prevent doubled border lines */
-  --bs-table-bg: transparent;
-  --bs-table-active-bg: transparent;
-  --bs-table-border-color: white;
-  --bs-table-active-color: var(--bs-emphasis-color);
-  --bs-table-hover-color: var(--bs-emphasis-color);
+  --bs-table-bg: rgb(0 0 0 0%) !important;
 }
 
 .table-transparent th,
@@ -30,5 +25,5 @@
 }
 
 .table-group-divider tr {
-  border-bottom: 1px solid #dee2e6; /* Add a bottom border to each table row */
+  border-bottom: 1px solid #dee2e6; 
 }
