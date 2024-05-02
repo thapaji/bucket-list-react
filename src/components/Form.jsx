@@ -21,7 +21,6 @@ export const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    /* Api Call Here*/
     setFormData({
       title: "",
       description: "",
