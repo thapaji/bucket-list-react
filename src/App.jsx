@@ -4,7 +4,6 @@ import { Login } from "./pages/Login";
 import Signup from "./pages/Signup";
 import { MainLayout } from "./layout/MainLayout";
 import Dashboard from "./pages/Dashboard";
-import { AddNewList } from "./pages/AddNewList";
 
 function App() {
   const [logedInUser, setLogedInUser] = useState({});

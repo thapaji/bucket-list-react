@@ -5,17 +5,21 @@ import Modal from "react-bootstrap/Modal";
 import React from "react";
 import { CustomInput } from "../components/CustomInput";
 import { Form } from "react-bootstrap";
+import { Spinner } from "../components/Spinner";
+import { postBucketItem } from "../helpers/axiosHelper";
+import { toast } from "react-toastify";
 
-export const AddNewList = ({ setShow, show }) => {
+export const AddNewList = ({ setShow, show, logedInUser }) => {
   const handleClose = () => setShow(false);
-
+  console.log(logedInUser);
   const initialState = {
     title: "",
     description: "",
     category: "-----Select category-----",
     location: "",
     cost: "",
-    owner: "",
+    // owner: logedInUser._id,
+    status: "listed",
   };
 
   const [loading, setLoading] = useState(false);
@@ -29,10 +33,20 @@ export const AddNewList = ({ setShow, show }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    handleReset();
+    formData.owner = logedInUser._id;
+    setLoading(true);
+    const data = await postBucketItem(formData);
+    if (data.status === "success") {
+      setFormData(initialState);
+      toast.success(data.message);
+      handleReset();
+      handleClose();
+    } else {
+      toast.error(data.message);
+    }
+    setLoading(false);
   };
 
   const handleReset = () => {
@@ -69,12 +83,20 @@ export const AddNewList = ({ setShow, show }) => {
       required: true,
       options: [
         {
+          value: "",
+          label: "----SELECT CATEGORY----",
+        },
+        {
           value: "Adventure",
           label: "Adventure",
         },
         {
           value: "Travel",
           label: "Travel",
+        },
+        {
+          value: "Personal Development",
+          label: "Personal Development",
         },
       ],
     },
@@ -95,7 +117,6 @@ export const AddNewList = ({ setShow, show }) => {
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             {inputes.map((item, i) => (
-              // console.log(item);
               <CustomInput key={i} {...item} value={formData[item.name]} onChange={handleChange} />
             ))}
             <div className="row">

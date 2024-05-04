@@ -32,9 +32,9 @@ export const Login = ({ setLogedInUser }) => {
     try {
       const result = await loginUser(formData);
       // setResp({ status: result.status, message: result.message });
-      console.log(result);
+      // console.log(result);
       if (result?.status === "success") {
-        console.log(result.user);
+        // console.log(result.user);
         setLogedInUser(result.user);
         toast.success(result.message);
         navigate("/dashboard");

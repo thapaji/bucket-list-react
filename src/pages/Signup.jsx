@@ -37,9 +37,9 @@ const Signup = () => {
     setResp(data);
     if (data.status === "success") {
       setFormData(initialState);
-      toast.success(resp.message);
+      toast.success(data.message);
     } else {
-      toast.error(resp.message);
+      toast.error(data.message);
     }
     setLoading(false);
   };
