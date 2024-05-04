@@ -31,19 +31,20 @@ export const Login = ({ setLogedInUser }) => {
     setLoading(true);
     try {
       const result = await loginUser(formData);
-      setResp({ status: result.status, message: result.message });
-
-      if (resp?.status === "success") {
-        // console.log(result.user);
+      // setResp({ status: result.status, message: result.message });
+      console.log(result);
+      if (result?.status === "success") {
+        console.log(result.user);
         setLogedInUser(result.user);
-        toast.success(resp.message);
+        toast.success(result.message);
         navigate("/dashboard");
       } else {
-        toast.error(resp.message);
+        console.log("hello miaaaaaa");
+        toast.error(result.message);
       }
     } catch (error) {
       console.log(error);
-      toast.error(resp.message);
+      toast.error(result.message);
     } finally {
       setLoading(false);
     }

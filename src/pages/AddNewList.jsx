@@ -64,9 +64,19 @@ export const AddNewList = ({ setShow, show }) => {
     {
       label: "Category",
       name: "category",
-      type: "text",
+      type: "select",
       placeholder: "Select Category",
       required: true,
+      options: [
+        {
+          value: "Adventure",
+          label: "Adventure",
+        },
+        {
+          value: "Travel",
+          label: "Travel",
+        },
+      ],
     },
     {
       label: "Cost",
@@ -88,17 +98,21 @@ export const AddNewList = ({ setShow, show }) => {
               // console.log(item);
               <CustomInput key={i} {...item} value={formData[item.name]} onChange={handleChange} />
             ))}
-            <div className="d-flex justify-content-between">
+            <div className="row">
               {loading ? (
                 <Spinner />
               ) : (
                 <>
-                  <Button type="submit">Sign Up...</Button>
-                  <Button variant="info" onClick={handleReset}>Reset</Button>
-                  <Button variant="secondary" onClick={handleClose}>
-                    Close
-                  </Button>
-    
+                  <div className="col d-grid">
+                    {" "}
+                    <Button type="submit">Sign Up...</Button>
+                  </div>
+                  <div className="col d-grid">
+                    {" "}
+                    <Button variant="info" onClick={handleReset}>
+                      Reset
+                    </Button>
+                  </div>
                 </>
               )}
             </div>
