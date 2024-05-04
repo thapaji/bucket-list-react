@@ -34,9 +34,9 @@ export const loginUser = async (userObj) => {
 
 
 /******************* Methods for Transaction *******************************/
-export const getBucketLists = async () => {
+export const getBucketLists = async (owner) => {
     try {
-        const { data } = await axios.get(listEp);
+        const { data } = await axios.get(listEp,owner);
         return data;
     } catch (error) {
         console.log(error)

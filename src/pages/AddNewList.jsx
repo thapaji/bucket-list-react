@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 
 export const AddNewList = ({ setShow, show, logedInUser }) => {
   const handleClose = () => setShow(false);
-  console.log(logedInUser);
+//   console.log(logedInUser);
   const initialState = {
     title: "",
     description: "",
@@ -126,7 +126,7 @@ export const AddNewList = ({ setShow, show, logedInUser }) => {
                 <>
                   <div className="col d-grid">
                     {" "}
-                    <Button type="submit">Sign Up...</Button>
+                    <Button type="submit">Add...</Button>
                   </div>
                   <div className="col d-grid">
                     {" "}

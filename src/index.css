@@ -11,8 +11,8 @@
 }
 
 .glasscard {
-  backdrop-filter: blur(10px); 
-  background-color: rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .table-transparent {
@@ -24,6 +24,10 @@
   border: none;
 }
 
+.table-transparent tbody {
+  cursor: pointer;
+}
+
 .table-group-divider tr {
-  border-bottom: 1px solid #dee2e6; 
+  border-bottom: 1px solid #dee2e6;
 }
