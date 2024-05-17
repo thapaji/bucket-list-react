@@ -9,7 +9,7 @@ import { Spinner } from "../components/Spinner";
 import { postBucketItem } from "../helpers/axiosHelper";
 import { toast } from "react-toastify";
 
-export const AddNewList = ({ setShow, show, logedInUser, clickedItem = {} }) => {
+export const AddNewList = ({ setShow, show, logedInUser, clickedItem  }) => {
   const handleClose = () => setShow(false);
   //   console.log(logedInUser);
   const initialState = {
@@ -60,6 +60,7 @@ export const AddNewList = ({ setShow, show, logedInUser, clickedItem = {} }) => 
       type: "text",
       placeholder: "Enter Title",
       required: true,
+      value: formData.title,
     },
     {
       label: "Description",
@@ -68,12 +69,14 @@ export const AddNewList = ({ setShow, show, logedInUser, clickedItem = {} }) => 
       placeholder: "Describe your list item",
       rows: "3",
       required: true,
+      value: formData.description,
     },
     {
       label: "Location",
       name: "location",
       type: "text",
       placeholder: "Enter Location",
+      value: formData.location,
     },
     {
       label: "Category",
@@ -81,6 +84,7 @@ export const AddNewList = ({ setShow, show, logedInUser, clickedItem = {} }) => 
       type: "select",
       placeholder: "Select Category",
       required: true,
+      value: formData.category,
       options: [
         {
           value: "",
@@ -105,6 +109,7 @@ export const AddNewList = ({ setShow, show, logedInUser, clickedItem = {} }) => 
       name: "cost",
       type: "number",
       placeholder: "cost",
+      value: formData.cost,
     },
   ];
 
@@ -112,7 +117,7 @@ export const AddNewList = ({ setShow, show, logedInUser, clickedItem = {} }) => 
     <>
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New To Your Bucket List</Modal.Title>
+          <Modal.Title>{clickedItem?'Edit ': 'Add New '}Your Bucket List</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
@@ -126,7 +131,7 @@ export const AddNewList = ({ setShow, show, logedInUser, clickedItem = {} }) => 
                 <>
                   <div className="col d-grid">
                     {" "}
-                    <Button type="submit">Add...</Button>
+                    <Button type="submit">{clickedItem?'Edit...':'Add...'}</Button>
                   </div>
                   <div className="col d-grid">
                     {" "}
