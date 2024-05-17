@@ -9,17 +9,17 @@ import { Spinner } from "../components/Spinner";
 import { postBucketItem } from "../helpers/axiosHelper";
 import { toast } from "react-toastify";
 
-export const AddNewList = ({ setShow, show, logedInUser }) => {
+export const AddNewList = ({ setShow, show, logedInUser, clickedItem = {} }) => {
   const handleClose = () => setShow(false);
-//   console.log(logedInUser);
+  //   console.log(logedInUser);
   const initialState = {
-    title: "",
-    description: "",
-    category: "-----Select category-----",
-    location: "",
-    cost: "",
+    title: clickedItem ? clickedItem.title : "",
+    description: clickedItem ? clickedItem.description : "",
+    category: clickedItem ? clickedItem.category : "-----Select category-----",
+    location: clickedItem ? clickedItem.location : "",
+    cost: clickedItem ? clickedItem.cost : "",
     // owner: logedInUser._id,
-    status: "listed",
+    status: clickedItem ? clickedItem.status : "listed",
   };
 
   const [loading, setLoading] = useState(false);

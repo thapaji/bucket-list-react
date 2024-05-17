@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { getBucketLists } from "../helpers/axiosHelper";
+import { getBucketLists, getBucketList } from "../helpers/axiosHelper";
 import { FaTrash, FaArrowRight } from "react-icons/fa";
 import { ListDetails } from "../pages/ListDetails";
 
-export const Table = () => {
+export const Table = ({ logedInUser }) => {
   const [listItems, setListIteams] = useState([]);
-  const [show, setShow] = useState(false);
-  const [clickedId, setClickedId] = useState("");
+  const [showDetails, setShowDetails] = useState(false);
+  // const [clickedId, setClickedId] = useState("");
+  const [clickedItem, setClickedItem] = useState({});
 
   useEffect(() => {
     fetchFromAPI();
@@ -28,10 +29,11 @@ export const Table = () => {
     console.log(_id);
   };
 
-  const showDetails = (id) => {
-    console.log("first");
-    setClickedId(id);
-    setShow(true);
+  const handleShowDetails = async (id) => {
+    // setClickedId(id);
+    const { data } = await getBucketList(logedInUser._id, id);
+    setClickedItem(await data);
+    setShowDetails(true);
   };
 
   return (
@@ -52,7 +54,7 @@ export const Table = () => {
             </thead>
             <tbody id="listed" className="table-group-divider">
               {listed.map((item, i) => (
-                <tr key={i} onClick={() => showDetails(item._id)}>
+                <tr key={i} onClick={() => handleShowDetails(item._id)}>
                   {/* <td>
                     <input
                       type="checkbox"
@@ -67,6 +69,7 @@ export const Table = () => {
                   <td>{item.location}hrs</td>
                   <td>{item.category}</td>
                   <td>{item.cost}</td>
+                  {/************  Buttons to be replaced by model  ************* }
                   <td className="text-end">
                     <button
                       onClick={() => handOnDelete(item._id)}
@@ -78,6 +81,7 @@ export const Table = () => {
                       <FaArrowRight />
                     </button>
                   </td>
+                  {*******************************/}
                 </tr>
               ))}
             </tbody>
@@ -123,7 +127,11 @@ export const Table = () => {
           </table>
         </div>
       </div>
-      <ListDetails setShow={setShow} show={show} clickedId={clickedId} />
+      <ListDetails
+        setShowDetails={setShowDetails}
+        showDetails={showDetails}
+        clickedItem={clickedItem}
+      />
     </div>
   );
 };

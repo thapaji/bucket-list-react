@@ -9,7 +9,7 @@ const Dashboard = ({ logedInUser }) => {
       <Container className="main pt-5">
         <h4>Dashboard | Welcome {logedInUser?.name}</h4>
         <hr />
-        <Table />
+        <Table logedInUser={logedInUser} />
       </Container>
     </AuthComponent>
   );

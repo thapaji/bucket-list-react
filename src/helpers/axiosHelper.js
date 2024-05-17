@@ -33,10 +33,32 @@ export const loginUser = async (userObj) => {
 }
 
 
-/******************* Methods for Transaction *******************************/
+/******************* Methods for Bucket List *******************************/
 export const getBucketLists = async (owner) => {
     try {
-        const { data } = await axios.get(listEp,owner);
+        const { data } = await axios.get(listEp, owner);
+        return data;
+    } catch (error) {
+        console.log(error)
+        return {
+            status: 'error',
+            message: error.message,
+        }
+    }
+}
+
+export const getBucketList = async (owner, id) => {
+    try {
+        console.log(owner, id);
+        const { data } = await axios.get(listEp + '/list', {
+            headers: {
+                Authorization: owner,
+                _id: id
+            }
+        });
+        // const { data } = await axios.get(listEp + '/list', id);
+        console.log('jsdhljkfsdhljkfvhsljkgavhjklsdafhgjlkasdhjifu dsif hjhiuasd hfidsah fiudwhjif sadhiuf h adisu fiuasd fiu sdhiu')
+        console.log(data)
         return data;
     } catch (error) {
         console.log(error)
