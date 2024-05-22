@@ -2,8 +2,16 @@ import React from "react";
 import { Container, Nav } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import { AddNewList } from "../pages/AddNewList";
+import { useNavigate } from "react-router-dom";
 
-export const Header = ({ logedInUser, setShow, show }) => {
+export const Header = ({ logedInUser, setLogedInUser, setShow, show }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    sessionStorage.removeItem("logedInUser");
+    setLogedInUser(null);
+    navigate("/");
+  };
+
   return (
     <>
       <Navbar expand="md" className="bg-primary shadow-lg">
@@ -23,7 +31,7 @@ export const Header = ({ logedInUser, setShow, show }) => {
                   >
                     Add New
                   </Nav.Link>
-                  <Nav.Link href="/">Logout</Nav.Link>
+                  <Nav.Link onClick={handleClick}>Logout</Nav.Link>
                 </>
               ) : (
                 <>

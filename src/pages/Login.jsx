@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import { CustomInput } from "../components/CustomInput";
 import { loginUser } from "../helpers/axiosHelper";
@@ -17,13 +17,22 @@ export const Login = ({ setLogedInUser }) => {
   const [resp, setResp] = useState("");
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const logedInUser = sessionStorage.getItem("logedInUser");
+    if (logedInUser) {
+      setLogedInUser(JSON.parse(logedInUser));
+      navigate("/dashboard");
+    } else {
+      setLogedInUser(null);
+    }
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
-    // console.log(email, password);
   };
 
   const handleSubmit = async (e) => {
@@ -31,12 +40,10 @@ export const Login = ({ setLogedInUser }) => {
     setLoading(true);
     try {
       const result = await loginUser(formData);
-      // setResp({ status: result.status, message: result.message });
-      // console.log(result);
       if (result?.status === "success") {
-        // console.log(result.user);
         setLogedInUser(result.user);
         toast.success(result.message);
+        sessionStorage.setItem("logedInUser", JSON.stringify(result.user));
         navigate("/dashboard");
       } else {
         console.log("hello miaaaaaa");

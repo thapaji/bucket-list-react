@@ -5,10 +5,15 @@ import { ToastContainer } from "react-toastify";
 import { Footer } from "../components/Footer";
 import "react-toastify/dist/ReactToastify.css";
 
-export const MainLayout = ({ logedInUser, setShow, show }) => {
+export const MainLayout = ({ logedInUser, setLogedInUser, setShow, show }) => {
   return (
     <>
-      <Header logedInUser={logedInUser} setShow={setShow} show={show}/>
+      <Header
+        logedInUser={logedInUser}
+        setLogedInUser={setLogedInUser}
+        setShow={setShow}
+        show={show}
+      />
       <Outlet />
       <ToastContainer />
       <Footer />

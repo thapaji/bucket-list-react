@@ -2,8 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { AuthComponent } from "../components/AuthComponent";
 import { Table } from "../components/Table";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = ({ logedInUser }) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!logedInUser?._id) {
+      navigate("/");
+    }
+  }, []);
   return (
     <AuthComponent logedInUser={logedInUser}>
       <Container className="main pt-5">

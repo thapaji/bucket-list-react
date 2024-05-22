@@ -9,7 +9,7 @@ import { Spinner } from "../components/Spinner";
 import { postBucketItem } from "../helpers/axiosHelper";
 import { toast } from "react-toastify";
 
-export const AddNewList = ({ setShow, show, logedInUser, clickedItem  }) => {
+export const AddNewList = ({ setShow, show, logedInUser, clickedItem }) => {
   const handleClose = () => setShow(false);
   //   console.log(logedInUser);
   const initialState = {
@@ -117,7 +117,7 @@ export const AddNewList = ({ setShow, show, logedInUser, clickedItem  }) => {
     <>
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
         <Modal.Header closeButton>
-          <Modal.Title>{clickedItem?'Edit ': 'Add New '}Your Bucket List</Modal.Title>
+          <Modal.Title>{clickedItem ? "Edit " : "Add New "}Your Bucket List</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
@@ -131,7 +131,7 @@ export const AddNewList = ({ setShow, show, logedInUser, clickedItem  }) => {
                 <>
                   <div className="col d-grid">
                     {" "}
-                    <Button type="submit">{clickedItem?'Edit...':'Add...'}</Button>
+                    <Button type="submit">{clickedItem ? "Edit..." : "Add..."}</Button>
                   </div>
                   <div className="col d-grid">
                     {" "}
