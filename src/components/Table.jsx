@@ -3,20 +3,13 @@ import { getBucketLists, getBucketList } from "../helpers/axiosHelper";
 import { FaTrash, FaArrowRight } from "react-icons/fa";
 import { ListDetails } from "../pages/ListDetails";
 
-export const Table = ({ logedInUser }) => {
-  const [listItems, setListIteams] = useState([]);
+export const Table = ({ logedInUser, fetchFromAPI, listItems }) => {
   const [showDetails, setShowDetails] = useState(false);
-  // const [clickedId, setClickedId] = useState("");
   const [clickedItem, setClickedItem] = useState({});
 
   useEffect(() => {
     fetchFromAPI();
   }, []);
-
-  const fetchFromAPI = async () => {
-    const result = await getBucketLists();
-    setListIteams(result.data);
-  };
 
   const listed = listItems?.filter((item) => item.status === "listed");
   const ticked = listItems?.filter((item) => item.status === "ticked");
@@ -30,7 +23,6 @@ export const Table = ({ logedInUser }) => {
   };
 
   const handleShowDetails = async (id) => {
-    // setClickedId(id);
     const { data } = await getBucketList(logedInUser._id, id);
     setClickedItem(await data);
     setShowDetails(true);

@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import { Footer } from "../components/Footer";
 import "react-toastify/dist/ReactToastify.css";
 
-export const MainLayout = ({ logedInUser, setLogedInUser, setShow, show }) => {
+export const MainLayout = ({ logedInUser, setLogedInUser, setShow, show, fetchFromAPI }) => {
   return (
     <>
       <Header
@@ -13,6 +13,7 @@ export const MainLayout = ({ logedInUser, setLogedInUser, setShow, show }) => {
         setLogedInUser={setLogedInUser}
         setShow={setShow}
         show={show}
+        fetchFromAPI={fetchFromAPI}
       />
       <Outlet />
       <ToastContainer />

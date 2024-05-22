@@ -7,7 +7,7 @@ import React from "react";
 import { CustomInput } from "../components/CustomInput";
 import { Col, Form, Row } from "react-bootstrap";
 import { Spinner } from "../components/Spinner";
-import { getBucketList, postBucketItem } from "../helpers/axiosHelper";
+import { deleteBucketItem } from "../helpers/axiosHelper";
 import { toast } from "react-toastify";
 
 export const ListDetails = ({ setShowDetails, showDetails, logedInUser, clickedItem }) => {
@@ -24,6 +24,13 @@ export const ListDetails = ({ setShowDetails, showDetails, logedInUser, clickedI
     // setthe item ticked....
     setShowDetails(false);
     toast.success("You have ticked this List");
+  };
+
+  const handleDelete = async (_id) => {
+    // console.log(clickedItem);
+    const { status, message } = await deleteBucketItem([clickedItem._id]);
+    setShowDetails(false);
+    toast[status](message);
   };
 
   return (
@@ -90,7 +97,9 @@ export const ListDetails = ({ setShowDetails, showDetails, logedInUser, clickedI
                 </Button>
               </Col>
               <Col className="d-grid">
-                <Button variant="danger">Delete</Button>
+                <Button variant="danger" onClick={() => handleDelete()}>
+                  Delete
+                </Button>
               </Col>
             </Row>
             <AddNewList

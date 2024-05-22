@@ -49,16 +49,12 @@ export const getBucketLists = async (owner) => {
 
 export const getBucketList = async (owner, id) => {
     try {
-        console.log(owner, id);
         const { data } = await axios.get(listEp + '/list', {
             headers: {
                 Authorization: owner,
                 _id: id
             }
         });
-        // const { data } = await axios.get(listEp + '/list', id);
-        console.log('jsdhljkfsdhljkfvhsljkgavhjklsdafhgjlkasdhjifu dsif hjhiuasd hfidsah fiudwhjif sadhiuf h adisu fiuasd fiu sdhiu')
-        console.log(data)
         return data;
     } catch (error) {
         console.log(error)
@@ -79,5 +75,23 @@ export const postBucketItem = async (listItem) => {
             status: 'error',
             message: error.message,
         }
+    }
+}
+
+export const deleteBucketItem = async (idsToDelete) => {
+    try {
+        const { data } = await axios.delete(listEp, {
+            data: idsToDelete,
+            // headers: {
+            //     Authorization: userId,
+            // },
+        });
+        return data;
+    } catch (error) {
+        console.log(error);
+        return {
+            status: "error",
+            message: error.message,
+        };
     }
 }

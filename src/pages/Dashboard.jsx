@@ -4,7 +4,7 @@ import { AuthComponent } from "../components/AuthComponent";
 import { Table } from "../components/Table";
 import { useNavigate } from "react-router-dom";
 
-const Dashboard = ({ logedInUser }) => {
+const Dashboard = ({ logedInUser, fetchFromAPI, listItems }) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!logedInUser?._id) {
@@ -16,7 +16,7 @@ const Dashboard = ({ logedInUser }) => {
       <Container className="main pt-5">
         <h4>Dashboard | Welcome {logedInUser?.name}</h4>
         <hr />
-        <Table logedInUser={logedInUser} />
+        <Table logedInUser={logedInUser} fetchFromAPI={fetchFromAPI} listItems={listItems}/>
       </Container>
     </AuthComponent>
   );

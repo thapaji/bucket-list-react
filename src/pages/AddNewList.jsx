@@ -9,7 +9,7 @@ import { Spinner } from "../components/Spinner";
 import { postBucketItem } from "../helpers/axiosHelper";
 import { toast } from "react-toastify";
 
-export const AddNewList = ({ setShow, show, logedInUser, clickedItem }) => {
+export const AddNewList = ({ setShow, show, logedInUser, clickedItem, fetchFromAPI }) => {
   const handleClose = () => setShow(false);
   //   console.log(logedInUser);
   const initialState = {
@@ -41,6 +41,7 @@ export const AddNewList = ({ setShow, show, logedInUser, clickedItem }) => {
     if (data.status === "success") {
       setFormData(initialState);
       toast.success(data.message);
+      fetchFromAPI();
       handleReset();
       handleClose();
     } else {

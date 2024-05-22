@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { AddNewList } from "../pages/AddNewList";
 import { useNavigate } from "react-router-dom";
 
-export const Header = ({ logedInUser, setLogedInUser, setShow, show }) => {
+export const Header = ({ logedInUser, setLogedInUser, setShow, show, fetchFromAPI}) => {
   const navigate = useNavigate();
   const handleClick = () => {
     sessionStorage.removeItem("logedInUser");
@@ -43,7 +43,7 @@ export const Header = ({ logedInUser, setLogedInUser, setShow, show }) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <AddNewList logedInUser={logedInUser} setShow={setShow} show={show} />
+      <AddNewList logedInUser={logedInUser} setShow={setShow} show={show} fetchFromAPI={fetchFromAPI} />
     </>
   );
 };
