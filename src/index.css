@@ -1,18 +1,50 @@
+.bg-primary {
+  background: linear-gradient(90deg, rgba(0, 219, 222, 1) 0%, rgba(252, 0, 255, 1) 100%);
+}
+
+.btn-primary {
+  background-image: linear-gradient(-225deg, #2cd8d5 0%, #6b8dd6 48%, #8e37d7 100%);
+}
+.form-control {
+  background: linear-gradient(-225deg, rgba(125, 226, 252, 1) 0%, rgba(185, 182, 229, 1) 100%);
+  border: 1px solid white;
+}
+
+.btn-info {
+  background: linear-gradient(
+    -225deg,
+    rgba(93, 159, 255, 1) 0%,
+    rgba(184, 220, 255, 1) 48%,
+    rgba(107, 187, 255, 1) 100%
+  );
+}
+
+.btn-danger {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 129, 119, 1) 0%,
+    rgba(255, 134, 122, 1) 0%,
+    rgba(255, 140, 127, 1) 21%,
+    rgba(249, 145, 133, 1) 52%,
+    rgba(207, 85, 108, 1) 78%,
+    rgba(177, 42, 91, 1) 100%
+  );
+}
+
+.btn {
+  border: 1px solid black;
+}
+
 #root {
-  background: url(https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
-    center no-repeat;
-  /* background-color: #BFD7EA; 
-   padding: 1rem; 
-   height: 100vh; */
+  background: linear-gradient(0deg, rgba(172, 203, 238, 1) 0%, rgba(231, 240, 253, 1) 100%);
 }
 
 .main {
   height: calc(100vh - 11rem);
 }
-
-.glasscard {
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.2);
+.item-bg,
+.modal-content {
+  background: linear-gradient(-225deg, rgba(125, 226, 252, 1) 0%, rgba(185, 182, 229, 1) 100%);
 }
 
 .table-transparent {

@@ -6,19 +6,18 @@ import React from "react";
 import { CustomInput } from "../components/CustomInput";
 import { Form } from "react-bootstrap";
 import { Spinner } from "../components/Spinner";
-import { postBucketItem } from "../helpers/axiosHelper";
+import { postBucketItem, updateBucketItem } from "../helpers/axiosHelper";
 import { toast } from "react-toastify";
 
-export const AddNewList = ({ setShow, show, logedInUser, clickedItem, fetchFromAPI }) => {
+export const AddNewList = ({ setShow, show, clickedItem, fetchFromAPI, setShowDetails }) => {
   const handleClose = () => setShow(false);
-  //   console.log(logedInUser);
+  const logedInUser = JSON.parse(sessionStorage.getItem("logedInUser"));
   const initialState = {
     title: clickedItem ? clickedItem.title : "",
     description: clickedItem ? clickedItem.description : "",
     category: clickedItem ? clickedItem.category : "-----Select category-----",
     location: clickedItem ? clickedItem.location : "",
     cost: clickedItem ? clickedItem.cost : "",
-    // owner: logedInUser._id,
     status: clickedItem ? clickedItem.status : "listed",
   };
 
@@ -37,13 +36,17 @@ export const AddNewList = ({ setShow, show, logedInUser, clickedItem, fetchFromA
     e.preventDefault();
     formData.owner = logedInUser._id;
     setLoading(true);
-    const data = await postBucketItem(formData);
+    console.log(formData.owner);
+    const data = clickedItem
+      ? await updateBucketItem(clickedItem._id, formData)
+      : await postBucketItem(formData);
     if (data.status === "success") {
       setFormData(initialState);
       toast.success(data.message);
       fetchFromAPI();
       handleReset();
       handleClose();
+      setShowDetails && setShowDetails(false);
     } else {
       toast.error(data.message);
     }

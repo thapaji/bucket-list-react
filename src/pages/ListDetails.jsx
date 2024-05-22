@@ -7,10 +7,10 @@ import React from "react";
 import { CustomInput } from "../components/CustomInput";
 import { Col, Form, Row } from "react-bootstrap";
 import { Spinner } from "../components/Spinner";
-import { deleteBucketItem } from "../helpers/axiosHelper";
+import { updateBucketItem, deleteBucketItem } from "../helpers/axiosHelper";
 import { toast } from "react-toastify";
 
-export const ListDetails = ({ setShowDetails, showDetails, logedInUser, clickedItem }) => {
+export const ListDetails = ({ setShowDetails, showDetails, clickedItem, fetchFromAPI }) => {
   const [listItem, setListIteam] = useState([]);
   const [show, setShow] = useState(false);
 
@@ -20,17 +20,19 @@ export const ListDetails = ({ setShowDetails, showDetails, logedInUser, clickedI
     setFormData(initialState);
   };
 
-  const setListTicked = () => {
-    // setthe item ticked....
+  const setListTicked = async () => {
+    clickedItem.status = "ticked";
+    const { status, message } = await updateBucketItem(clickedItem._id, clickedItem);
     setShowDetails(false);
-    toast.success("You have ticked this List");
+    toast[status](message);
+    fetchFromAPI();
   };
 
   const handleDelete = async (_id) => {
-    // console.log(clickedItem);
     const { status, message } = await deleteBucketItem([clickedItem._id]);
     setShowDetails(false);
     toast[status](message);
+    fetchFromAPI();
   };
 
   return (
@@ -103,10 +105,11 @@ export const ListDetails = ({ setShowDetails, showDetails, logedInUser, clickedI
               </Col>
             </Row>
             <AddNewList
-              logedInUser={logedInUser}
               setShow={setShow}
               show={show}
+              setShowDetails={setShowDetails}
               clickedItem={clickedItem}
+              fetchFromAPI={fetchFromAPI}
             />
           </div>
         </Modal.Body>

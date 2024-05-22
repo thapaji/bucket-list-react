@@ -78,7 +78,7 @@ const Signup = () => {
     <div>
       <Container className="main" fluid>
         <Row className="d-flex justify-content-center">
-          <Col md={6} className="d-flex justify-content-center align-items-center">
+          <Col md={4} className="d-flex justify-content-center align-items-center">
             <div className="shadow-lg p-3 rounded border w-75 mt-5 mb-5 glasscard">
               <h2>Sign Up Now</h2>
               <hr />

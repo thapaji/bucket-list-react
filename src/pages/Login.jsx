@@ -46,7 +46,6 @@ export const Login = ({ setLogedInUser }) => {
         sessionStorage.setItem("logedInUser", JSON.stringify(result.user));
         navigate("/dashboard");
       } else {
-        console.log("hello miaaaaaa");
         toast.error(result.message);
       }
     } catch (error) {
@@ -79,11 +78,10 @@ export const Login = ({ setLogedInUser }) => {
         <Row className="d-flex justify-content-center ">
           <Col md={6} className="d-flex justify-content-center align-items-center">
             <div className="shadow-lg p-3 rounded border w-75 mt-5 mb-5 glasscard">
-              <h2>Login Now</h2>
+              <h2>Login Now</h2> use a@a.com and sa for test
               <hr />
               <Form onSubmit={handleSubmit}>
                 {inputes.map((item, i) => (
-                  // console.log(item);
                   <CustomInput
                     key={i}
                     {...item}
